@@ -13,7 +13,7 @@ module "cfn_params_lambda" {
 
   build_mode = "FILENAME"
   source_dir = "${path.module}/cfn_params"
-  filename   = "${path.module}/cfn_params_lambda.zip"
+  filename   = "${path.module}/cfn_params.zip"
 
   role_cloudwatch_logs       = true
   role_custom_policies       = [data.aws_iam_policy_document.cfn_params_lambda.json]
