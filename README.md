@@ -1,4 +1,4 @@
-# terraform-aws-ecs-pipeline
+# terraform-aws-ecs-service-pipeline
 
 These modules are used to create ECS services and CodePipeline pipelines for deploying images to them. It uses a **rolling update** deployment strategy.
 
