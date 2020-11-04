@@ -8,7 +8,9 @@ These modules are used to create ECS services and CodePipeline pipelines for dep
 * Optional approval step per environment (e.g. automatically deploy to dev, but wait for approval before deploying production).
 * Supports cross-account pipelines.
 
-TODO: diagram
+The following diagram shows how we have used this module to handle image deployments to ECS services in multiple environments. Deployments always roll out to the development environment straight away, but require approval before being promoted to the staging and production environments.
+
+![Diagram](diagram.png?raw=true)
 
 ## Service module
 

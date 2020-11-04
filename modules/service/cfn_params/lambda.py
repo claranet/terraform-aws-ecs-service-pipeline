@@ -1,7 +1,6 @@
 import json
 
 import boto3
-
 import cfnresponse
 
 ecs_client = boto3.client("ecs")
@@ -71,7 +70,8 @@ def lambda_handler(event, context):
 
 def get_ecs_service_desired_count(cluster_name, service_name):
     response = ecs_client.describe_services(
-        cluster=cluster_name, services=[service_name],
+        cluster=cluster_name,
+        services=[service_name],
     )
     for service in response["services"]:
         return service["desiredCount"]

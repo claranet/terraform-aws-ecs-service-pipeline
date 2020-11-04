@@ -1,0 +1,4 @@
+black==20.8b1
+diagrams==0.17.0
+flake8==3.8.4
+isort==5.6.4
