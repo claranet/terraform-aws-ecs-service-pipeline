@@ -1,10 +1,18 @@
-variable "extra_repo_names" {
-  type    = list(string)
-  default = []
+variable "repo_name" {
+  description = "The name of the ECR repository to create."
+  type        = string
 }
 
-variable "repo_name" {
-  type = string
+variable "extra_repo_names" {
+  description = "The names of any additional ECR repositories to create."
+  type        = list(string)
+  default     = []
+}
+
+variable "user_name" {
+  description = "The name of the IAM user to create. If not provided, the repo_name will be used."
+  type        = string
+  default     = ""
 }
 
 variable "pipeline_targets" {
@@ -32,7 +40,3 @@ variable "pipeline_targets" {
   }))
 }
 
-variable "user_name" {
-  type    = string
-  default = ""
-}

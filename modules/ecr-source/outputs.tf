@@ -7,6 +7,7 @@ output "creds" {
 }
 
 output "location" {
+  description = "The ECR location which the pipeline will use as a source."
   value = {
     image_tag       = "deploy"
     repository_arn  = aws_ecr_repository.this.arn
@@ -15,6 +16,7 @@ output "location" {
 }
 
 output "repository_arns" {
+  description = "The ARNs of the created ECR repositories."
   value = concat(
     [aws_ecr_repository.this.arn],
     [for repo in aws_ecr_repository.extra : repo.arn],
@@ -22,6 +24,7 @@ output "repository_arns" {
 }
 
 output "repository_names" {
+  description = "The names of the created ECR repositories."
   value = concat(
     [aws_ecr_repository.this.name],
     [for repo in aws_ecr_repository.extra : repo.name],
@@ -29,6 +32,7 @@ output "repository_names" {
 }
 
 output "repository_urls" {
+  description = "The URLs of the created ECR repositories."
   value = concat(
     [aws_ecr_repository.this.repository_url],
     [for repo in aws_ecr_repository.extra : repo.repository_url],

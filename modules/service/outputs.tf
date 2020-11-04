@@ -24,21 +24,21 @@ output "pipeline_target" {
 }
 
 output "service_arn" {
-  description = "The ECS service ARN."
+  description = "The ARN of the created ECS service."
   value       = lookup(aws_cloudformation_stack.this.outputs, "ServiceArn", "")
 }
 
 output "service_name" {
-  description = "The ECS service name."
+  description = "The name of the created ECS service."
   value       = lookup(aws_cloudformation_stack.this.outputs, "ServiceName", "")
 }
 
 output "task_role_arn" {
-  description = "The ECS task role ARN."
+  description = "The ARN of the created ECS task role."
   value       = aws_iam_role.ecs_task.arn
 }
 
 output "task_role_name" {
-  description = "The ECS task role name."
+  description = "The name of the created ECS task role."
   value       = aws_iam_role.ecs_task.id
 }

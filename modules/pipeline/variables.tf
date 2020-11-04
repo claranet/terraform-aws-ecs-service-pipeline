@@ -1,5 +1,6 @@
 variable "name" {
-  type = string
+  description = "The name of the pipeline to create."
+  type        = string
 }
 
 variable "kms_key_arn" {

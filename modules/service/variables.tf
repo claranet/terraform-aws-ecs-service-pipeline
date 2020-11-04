@@ -1,80 +1,96 @@
 variable "assign_public_ip" {
-  type    = bool
-  default = false
+  description = "Assign a public IP address to the ENI (FARGATE launch type only)."
+  type        = bool
+  default     = false
 }
 
 variable "autoscaling_max" {
-  type    = number
-  default = 1
+  description = "The maximum number of tasks to run."
+  type        = number
+  default     = 1
 }
 
 variable "autoscaling_min" {
-  type    = number
-  default = 1
+  description = "The minimum number of tasks to run."
+  type        = number
+  default     = 1
 }
 
 variable "autoscaling_target_cpu" {
-  type    = number
-  default = 80
+  description = "The average CPU percentage that auto scaling should aim for (if autoscaling_min and autoscaling_max are different)."
+  type        = number
+  default     = 80
 }
 
 variable "bind_mounts" {
-  type    = list(object({ container_path = string, host_path = string, volume_name = string }))
-  default = []
+  description = "Bind mounts for the container."
+  type        = list(object({ container_path = string, host_path = string, volume_name = string }))
+  default     = []
 }
 
 variable "capacity_provider" {
-  type    = string
-  default = null
+  description = "The name of a single capacity provider to use (conflicts with capacity_provider_strategy)."
+  type        = string
+  default     = null
 }
 
 variable "capacity_provider_strategy" {
-  type    = list(object({ base = number, capacity_provider = string, weight = number }))
-  default = []
+  description = "A list of capacity provider strategy items to use for the service (conflicts with capacity_provider)."
+  type        = list(object({ base = number, capacity_provider = string, weight = number }))
+  default     = []
 }
 
 variable "cluster_name" {
-  type = string
+  description = "The ECS cluster to create this service on."
+  type        = string
 }
 
 variable "container_name" {
-  type = string
+  description = "The name to use for the container in this service."
+  type        = string
 }
 
 variable "container_port" {
-  type = number
+  description = "The port that the container listens on."
+  type        = number
 }
 
 variable "cpu" {
-  type = number
+  description = "The number of cpu units used by the task."
+  type        = number
 }
 
 variable "environment" {
-  type    = map(string)
-  default = {}
+  description = "A map of environment variables to pass into the container."
+  type        = map(string)
+  default     = {}
 }
 
 variable "gpu" {
-  type    = number
-  default = 0
+  description = "The number of GPUs used by the task."
+  type        = number
+  default     = 0
 }
 
 variable "launch_type" {
+  description = "The launch type on which to run your service (FARGATE or EC2)."
   type        = string
-  description = "FARGATE or EC2"
 }
 
 variable "log_group_name" {
-  type = string
+  description = "The name of the log group to use."
+  type        = string
 }
 
 variable "memory" {
-  type = number
+  description = "The amount (in MiB) of memory used by the task."
+  type        = number
 }
 
 variable "mount_points" {
-  type    = list(map(any))
-  default = []
+  description = "Mount points matching this specification: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions-mountpoints.html"
+  type        = list(map(any))
+  default     = []
 }
 
 variable "pipeline_aws_account_id" {
@@ -96,34 +112,41 @@ variable "pipeline_target_name" {
 }
 
 variable "secrets" {
-  type    = map(string)
-  default = {}
+  description = "A map of { ENVIRONMENT_VARIABLE_NAME = secret_or_ssm_parameter_arn } to pass into the container."
+  type        = map(string)
+  default     = {}
 }
 
 variable "security_group_ids" {
-  type    = list(string)
-  default = []
+  description = "The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used."
+  type        = list(string)
+  default     = []
 }
 
 variable "service_name" {
-  type = string
+  description = "The name of the service to create."
+  type        = string
 }
 
 variable "stack_name" {
-  type = string
+  description = "The name of the CloudFormation stack to create."
+  type        = string
 }
 
 variable "subnet_ids" {
-  type    = list(string)
-  default = []
+  description = "The subnets associated with the task or service."
+  type        = list(string)
+  default     = []
 }
 
 variable "target_group_arn" {
-  type    = string
-  default = null
+  description = "The ARN of the Load Balancer target group to associate with the service."
+  type        = string
+  default     = null
 }
 
 variable "volumes" {
-  type    = list(map(any))
-  default = []
+  description = "Volumes matching this specification: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-volumes.html"
+  type        = list(map(any))
+  default     = []
 }

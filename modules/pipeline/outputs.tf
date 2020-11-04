@@ -1,3 +1,4 @@
 output "pipeline_arn" {
-  value = aws_codepipeline.this.arn
+  description = "The ARN of the created pipepline."
+  value       = aws_codepipeline.this.arn
 }
