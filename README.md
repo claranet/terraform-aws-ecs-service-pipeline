@@ -7,6 +7,7 @@ These modules are used to create ECS services and CodePipeline pipelines for dep
 * ECS services are created using CloudFormation with a [rolling update ECS deployment controller](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-ecs.html).
 * Optional approval step per environment (e.g. automatically deploy to dev, but wait for approval before deploying to production).
 * Supports cross-account pipelines.
+* Works with Fargate or EC2 container instances - see [terraform-aws-ecs-container-instances](https://github.com/claranet/terraform-aws-ecs-container-instances).
 
 The following diagram shows how we have used this module to handle image deployments to ECS services in multiple environments. Deployments always roll out to the development environment straight away, but require approval before being promoted to the staging and production environments.
 
