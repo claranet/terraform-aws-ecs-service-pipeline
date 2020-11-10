@@ -1,3 +1,15 @@
+variable "alarm" {
+  description = "Configures a CloudWatch alarm for when tasks are not running."
+  type = object({
+    period              = number
+    evaluation_periods  = number
+    datapoints_to_alarm = number
+    alarm_actions       = list(string)
+    ok_actions          = list(string)
+  })
+  default = null
+}
+
 variable "assign_public_ip" {
   description = "Assign a public IP address to the ENI (FARGATE launch type only)."
   type        = bool
