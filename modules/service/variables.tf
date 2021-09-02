@@ -101,7 +101,7 @@ variable "memory" {
 
 variable "mount_points" {
   description = "Mount points matching this specification: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions-mountpoints.html"
-  type        = list(map(any))
+  type        = list(any)
   default     = []
 }
 
@@ -159,6 +159,6 @@ variable "target_group_arn" {
 
 variable "volumes" {
   description = "Volumes matching this specification: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-volumes.html"
-  type        = list(map(any))
+  type        = list(any)
   default     = []
 }
